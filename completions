@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+_grav-util_completions() 
+{
+	commands='install update help serve'
+	COMPREPLY=( $(compgen -W "$commands" ${COMP_WORDS[COMP_CWORD]} | xargs) )
+}
+
+complete -F _grav-util_completions grav-util
