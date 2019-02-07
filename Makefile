@@ -21,7 +21,8 @@ base-install: ${PUBLIC_HTML}
 ginkgo-install: base-install ginkgo-grav
 
 ${PUBLIC_HTML}:
-	test -d ${PUBLIC_HTML} || docs-user user_name=${project} 
+	# ${@} does not exist. Did you forget to run `docs-user create-user`?
+	@ false
 
 update:
 	'${PUBLIC_HTML}/bin'/gpm selfupgrade -f
