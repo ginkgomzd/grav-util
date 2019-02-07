@@ -1,33 +1,31 @@
 include make-do.mk
 
-project ?= getgrav
-skeleton ?= learn2-with-git-sync-site
+$(call require-env, project)
+
+public_html ?= /home/${project}/public_html
 release ?= 1.5.7
 
 help:
-	# grav-util install - creates a grav instance using defaults.
-	#
-	# grav-util install project=myproject - override the directory created.
-	#
-	# grav-util install skeleton=learn2-with-git-sync-site - override the grav-skeleton used to create the install
+	# grav-util install project=project - creates a grav instance using defaults.
 	#
 	# grav-util serve - run a server (for dev environments only)
 	#
 	# grav-util update - gpm selfupgrade
 
-install: grav-skeleton-${skeleton}
-	mv grav-skeleton-${skeleton} '${project}'
+#install: release.zip ${public_html}
+install: ${public_html}
+	composer create-project getgrav/grav ${public_html} ${release} --no-dev
+	docs-user user_name=${project}  facls
 
-grav-skeleton-$(skeleton): release-${skeleton}.zip
-	-unzip -qq release-${skeleton}.zip
-	-rm release-${release}.zip
+${public_html}:
+	test -d ${public_html} || docs-user user_name=${project} 
 
-release-%.zip:
-	curl -Li -o ${THIS_DIR}$(@) https://getgrav.org/download/skeletons/${skeleton}/${release}
+#/tmp/grav-release.zip:
+#	curl -Li -o $(@) https://getgrav.org/download/${release}
 
 update:
-	'${project}/bin'/gpm selfupgrade -f
+	'${public_html}/bin'/gpm selfupgrade -f
 
 serve:
-	cd '${project}' && \
+	cd '${public_html}' && \
 	php -S localhost:8947 system/router.php
