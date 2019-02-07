@@ -2,7 +2,7 @@ include make-do.mk
 
 $(call require-env, project)
 
-PUBLIC_HTML ?= /home/${project}/PUBLIC_HTML
+PUBLIC_HTML ?= /home/${project}/public_html
 release ?= 1.5.7
 
 help:
