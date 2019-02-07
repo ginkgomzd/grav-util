@@ -15,8 +15,9 @@ help:
 install: base-install ginkgo-install
 
 base-install: ${PUBLIC_HTML}
+	@ test $$(id -u) -eq 0 && ( echo "Declining to run as root."; false) || true
 	composer create-project getgrav/grav ${PUBLIC_HTML} ${release} --no-dev
-	docs-user user_name=${project}  facls
+	docs-user user_name=${project} facls
 
 ginkgo-install: base-install ginkgo-grav
 
