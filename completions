@@ -2,8 +2,22 @@
 
 _grav-util_completions() 
 {
-	commands='install update help serve'
-	COMPREPLY=( $(compgen -W "$commands" ${COMP_WORDS[COMP_CWORD]} | xargs) )
+	# sed patterns to exclude targets
+	blacklist=( 'util-.*' 'require-env-.*' 'Makefile' )
+
+	MAKE_TARGET_WORDS=$(grav-util -p --dry-run | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | sort | uniq )
+
+	for bad in ${blacklist[@]};
+	do
+		MAKE_TARGET_WORDS=$( echo ${MAKE_TARGET_WORDS} | sed -e s/$bad//g )
+	done
+	COMPLETE_WORDS=${MAKE_TARGET_WORDS}
+
+	# parens are necessary to create an array
+	# xargs accumulates multiple lines into one line
+	COMPREPLY=( $(compgen -W "$COMPLETE_WORDS" ${COMP_WORDS[COMP_CWORD]} | xargs) )
+	return 0
+
 }
 
 complete -F _grav-util_completions grav-util
