@@ -7,14 +7,14 @@ This is a make-do module: https://github.com/ginkgostreet/make-do.git
 
 ## Usage
 
-`project` is required to be set for all usage. This should exist under /home, i.e., it should be a system user created using `docs-user`.
+`user_name` is required to be set for all usage. This should exist under /home, i.e., it should be a system user created using `docs-user`.
 
 ### install
 
 Create a grav instance for the docs-user, "user":
-`grav-util install project=user`
+`grav-util install user_name=user`
 
 ### update
 
 Call gpm selfupgrade to upgrade the grav release.
-`grav-util update project=user`
+`grav-util update user_name=user`
