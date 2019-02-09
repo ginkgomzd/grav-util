@@ -1,4 +1,5 @@
 ----
+
 # Ginkgo Grav-Util
 
 Helper for creating grav-instances in the Ginkgo Street Documentation Server.
@@ -25,6 +26,6 @@ Create a grav instance for the docs-user, "user":
 Call gpm selfupgrade to upgrade the grav release.
 `grav-util update user_name=user`
 
+
 ----
 This is a make-do module: https://github.com/ginkgostreet/make-do.git
-----

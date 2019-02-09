@@ -4,8 +4,13 @@ $(call require-env, USER_NAME)
 
 export PUBLIC_HTML ?= /home/${USER_NAME}/public_html
 
+$(info )
+$(info ---)
+$(info $$USER_NAME is ${USER_NAME})
+$(info ---)
+
 help:
-	pandoc -t plain README.md
+	@pandoc -t plain README.md
 
 create: base-install ginkgo-install
 
