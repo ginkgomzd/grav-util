@@ -1,0 +1,5 @@
+debugger:
+  enabled: true
+  shutdown:
+    close_connection: true
+  twig: true

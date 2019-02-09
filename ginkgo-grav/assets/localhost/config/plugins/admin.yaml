@@ -1,0 +1,11 @@
+widgets:
+  dashboard-maintenance: true
+  dashboard-statistics: false
+  dashboard-notifications: false
+  dashboard-feed: false
+  dashboard-pages: true
+notifications:
+  feed: false
+  dashboard: false
+  plugins: false
+  themes: false
