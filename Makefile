@@ -21,7 +21,7 @@ ${PUBLIC_HTML}:
 	@ false
 
 update:
-	'${PUBLIC_HTML}/bin'/gpm selfupgrade -f
+	cd '${PUBLIC_HTML}' && bin/gpm selfupgrade -f
 
 serve:
 	cd '${PUBLIC_HTML}' && \
