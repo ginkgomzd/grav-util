@@ -27,3 +27,4 @@ Call gpm selfupgrade to upgrade the grav release.
 
 ----
 This is a make-do module: https://github.com/ginkgostreet/make-do.git
+----
