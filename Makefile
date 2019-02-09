@@ -6,15 +6,9 @@ export PUBLIC_HTML ?= /home/${user_name}/public_html
 release ?= 1.5.7
 
 help:
-	# grav-util install user_name=user - creates a grav instance using defaults.
-	#
-	# supply PUBLIC_HTML=/var/www to override the default install location (/hom/user_name/public_html)
-	#
-	# grav-util serve - run a server (for dev environments only)
-	#
-	# grav-util update - gpm selfupgrade
-
-install: base-install ginkgo-install
+	pandoc -t plain README.md
+	
+create: base-install ginkgo-install
 
 base-install: ${PUBLIC_HTML}
 	@ test $$(id -u) -eq 0 && ( echo "Declining to run as root."; false) || true
