@@ -22,7 +22,7 @@ skelington: self-upgrade
 
 self-upgrade:
 	cd ${PUBLIC_HTML} && \
-	${CMD_GPM} selfupgrade -f
+	${CMD_GPM} selfupgrade -yf
 
 dev-env:
 	cp -r $(THIS_DIR)/assets/localhost ${PUBLIC_HTML}/user/localhost
