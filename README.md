@@ -1,4 +1,3 @@
-----
 
 # Ginkgo Grav-Util
 
@@ -16,20 +15,44 @@ export PUBLIC_HTML=/home/${USER_NAME}/public_html
 
 Override the default install location (`/home/$USER_NAME/public_html`) by setting `PUBLIC_HTML`.
 
-### Project Lab
+## Project Lab
 
 Create a grav instance for the docs-user, "user":
 `grav-util project-lab USER_NAME=user`
 
-### Create
+## Create
+
+`grav-util create`
 
 Create a working environment to update the Project Lab content
 
-### Serve
+## Project Lab Development Environment
+
+Create a local copy of a Project Lab to update content from. Commits pushed to GitHub will automatically be published to the Project Lab.
+
+```shell
+export PUBLIC_HTML=project-dir 
+grav-util dev-env
+export PROJ_LAB_REPO=git@github.com:/ginkgostreet/<project-repo>
+grav-util proect-lab-repo
+```
+Dev Env configs are contained in `user/localhost`.
+
+## Clone the Intance Repo
+Remove the default `user/` directory and replace it with the git-sync'd repo:
+```shell
+cd project-dir/
+rm -rf user/
+git clone git@github.com:ginkgostreet/fis-docs.git user
+```
+
+## Serve
+
+`grav-util serve`
 
 Start the PHP builtin server for a development instance. Uses `PUBLIC_HTML`.
 
-### Update
+## Update
 
 Call gpm selfupgrade to upgrade the grav release.
 `grav-util update USER_NAME=user`
