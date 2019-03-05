@@ -32,7 +32,8 @@ project-lab-repo: | require-env-PROJ_LAB_REPO require-env-PUBLIC_HTML
 	sudo rm -rf ${PUBLIC_HTML}/user
 	git clone ${PROJ_LAB_REPO} ${PUBLIC_HTML}/user
 
-dev-env: grav-install ginkgo-grav project-lab-repo
+dev-env: project-lab-repo
+	$(MAKE) -f ${THIS_DIR}/ginkgo-grav/Makefile dev-env admin-login ginkgo-rtfm
 
 serve:
 	cd '${PUBLIC_HTML}' && \
