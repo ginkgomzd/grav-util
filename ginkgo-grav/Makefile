@@ -16,9 +16,11 @@ skelington: self-upgrade
 	cd ${PUBLIC_HTML} && \
 	${CMD_GPM} install -n admin archives email error external_links featherlight feed form git-sync \
 	login markdown-fontawesome page-inject pagination problems relatedpages simplesearch sitemap taxonomylist \
-	youtube learn2-git-sync
+	youtube learn2
 	cd ${PUBLIC_HTML}/user/plugins && \
 	git clone git@github.com:fulltrucker/modified-date.git
+	cd ${PUBLIC_HTML}/user/themes && \
+	git clone git@github.com:ginkgostreet/grav-theme-ginkgo-rtfm ginkgo-rtfm
 
 self-upgrade:
 	cd ${PUBLIC_HTML} && \
