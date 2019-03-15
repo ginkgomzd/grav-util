@@ -10,7 +10,7 @@ FEATURE_DIR := 00.${NAME}
 all: templates configure
 
 ${FEATURE_DIR}:
-	mkdir 00.${@}
+	mkdir ${@}
 
 .PHONY: templates
 templates: ${FEATURE_DIR}
