@@ -56,12 +56,11 @@ It is safe to run `new-feature` on an existing feature because only missing file
 Create a grav instance for the docs-user, "user":
 `grav-util project-lab USER_NAME=user`
 
-### Create Grav Instance (Server Only)
+### Create Grav Instance
 
 `grav-util create`
 
 Install a fresh copy of Grav with the Project Lab install profile (RTFM theme).
-You can run this directly for a local install if you want, but this is automatically called when you create a dev-env.
 
 ### Serve Locally
 
