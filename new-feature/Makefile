@@ -5,10 +5,17 @@ $(call require-env, TITLE)
 NAME ?= $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -)
 $(info NAME, ${NAME})
 
-all: ${NAME} configure
+FEATURE_DIR := 00.${NAME}
 
-${NAME}:
-	cp -r ${THIS_DIR}/assets/new-feature 00.${@}
+all: templates configure
+
+${FEATURE_DIR}:
+	mkdir 00.${@}
+
+.PHONY: templates
+templates: ${FEATURE_DIR}
+	@# copy, no-clobber (-n)
+	cp -rn ${THIS_DIR}/assets/new-feature/* ${<}/
 
 .PHONY: configure
 configure:
