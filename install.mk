@@ -1,4 +1,5 @@
-install: uninstall /usr/local/bin/grav-util
+
+install: uninstall /usr/local/bin/grav-util /etc/bash_completion.d/grav-util
 
 uninstall:
 	- sudo rm -rf /usr/local/lib/grav-util
