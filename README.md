@@ -5,7 +5,7 @@ Helper for creating grav-instances in the Ginkgo Street Documentation Server.
 
 Some commands are used on the central server only. Others are useful for working in a local copy of the Project Lab.
 
-Requires [PHP Composer](https://getcomposer.org).
+Requires Gnu Make, [PHP Composer](https://getcomposer.org), and [GinkgoStreet/Make-do](https://github.com/ginkgostreet/make-do)
 
 ## Configure Commands
 You can supply values each time you call the command by setting the shell variable.
