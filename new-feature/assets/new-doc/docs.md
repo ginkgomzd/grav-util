@@ -1,12 +1,11 @@
 ---
 title: {{TITLE}}
 taxonomy:
-  category: 
+  category:
     - docs
   tag:
-    - new
+    - content
 routes:
   canonical: /{{NAME}}
 ---
 # {{TITLE}}
-
