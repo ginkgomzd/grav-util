@@ -7,7 +7,7 @@ taxonomy:
     - content
     - feature
 routes:
-  canonical: /features/{{name}}
+  canonical: /features/{{NAME}}
 content:
     items: '@self.children'
     limit: 0

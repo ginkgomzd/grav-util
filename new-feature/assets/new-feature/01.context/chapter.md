@@ -1,14 +1,14 @@
 ---
 title: Context
 taxonomy:
-  category: 
+  category:
     - docs
   tag:
     - content
     - feature
     - context
 routes:
-  canonical: /features/{{name}}/context
+  canonical: /features/{{NAME}}/context
 content:
     items: '@self.children'
     limit: 0

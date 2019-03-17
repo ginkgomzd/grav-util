@@ -1,14 +1,14 @@
 ---
 title: Solution
 taxonomy:
-  category: 
+  category:
     - docs
   tag:
     - content
     - feature
     - solution
 routes:
-  canonical: /features/{{name}}/solution
+  canonical: /features/{{NAME}}/solution
 content:
     items: '@self.children'
     limit: 0

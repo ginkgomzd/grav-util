@@ -1,14 +1,14 @@
 ---
 title: Discussion
 taxonomy:
-  category: 
+  category:
     - docs
   tag:
     - content
     - feature
     - discussion
 routes:
-  canonical: /features/{{name}}/discussion
+  canonical: /features/{{NAME}}/discussion
 content:
     items: '@self.children'
     limit: 0

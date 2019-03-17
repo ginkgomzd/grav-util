@@ -1,14 +1,14 @@
 ---
 title: Resolution
 taxonomy:
-  category: 
+  category:
     - docs
   tag:
     - content
     - feature
     - resolution
 routes:
-  canonical: /features/{{name}}/resolution
+  canonical: /features/{{NAME}}/resolution
 content:
     items: '@self.children'
     limit: 0
