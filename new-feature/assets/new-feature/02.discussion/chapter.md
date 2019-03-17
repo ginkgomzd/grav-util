@@ -6,7 +6,6 @@ taxonomy:
   tag:
     - content
     - feature
-    - discussion
 routes:
   canonical: /features/{{NAME}}/discussion
 content:

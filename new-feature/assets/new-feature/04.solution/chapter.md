@@ -6,7 +6,6 @@ taxonomy:
   tag:
     - content
     - feature
-    - solution
 routes:
   canonical: /features/{{NAME}}/solution
 content:

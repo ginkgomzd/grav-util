@@ -5,6 +5,7 @@ taxonomy:
     - docs
   tag:
     - content
+    - feature
 routes:
   canonical: /{{NAME}}
 ---

@@ -6,7 +6,6 @@ taxonomy:
   tag:
     - content
     - feature
-    - context
 routes:
   canonical: /features/{{NAME}}/context
 content:

@@ -6,7 +6,6 @@ taxonomy:
   tag:
     - content
     - feature
-    - resolution
 routes:
   canonical: /features/{{NAME}}/resolution
 content:
