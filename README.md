@@ -50,6 +50,12 @@ grav-util new-feature TITLE='Super Snazzy Whiz Bang'
 ```
 It is safe to run `new-feature` on an existing feature because only missing files will be created.
 
+### New Document
+Similar to new-feature, it will create a grav document in a new folder. It is not yet smart enough to generate a canonical URL based on your current location, or to inherit the taxonomy. Patches welcome.
+
+```shell
+grav-util new-doc TITLE='Developer Hubris Considered Harmful'
+```
 
 ### Project Lab (Server Only)
 

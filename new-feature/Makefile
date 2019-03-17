@@ -10,17 +10,30 @@ check_existing_dir = $(shell find . -maxdepth 1 -name '??.${NAME}')
 FEATURE_DIR ?= 	$(shell test '${check_existing_dir}' && echo '${check_existing_dir}' | sed 's/.\///' || echo 00.${NAME})
 $(info FEATURE_DIR, ${FEATURE_DIR})
 
-all: templates configure
+all: feature-templates configure
+	# TODO: set taxonomy terms
+
+new-doc: doc-templates configure
+	# TODO: set taxonomy terms
+	# TODO: set canoncial route
 
 ${FEATURE_DIR}:
 	mkdir ${@}
 
-.PHONY: templates
-templates: ${FEATURE_DIR}
+.PHONY: feature-templates
+feature-templates:
+	@$(eval TEMPLATE_SRC=new-feature)
+
+.PHONY: doc-templates
+doc-templates:
+	@$(eval TEMPLATE_SRC=new-doc)
+
+.PHONY: use-templates
+use-templates: ${FEATURE_DIR}
 	@# copy, no-clobber (-n)
-	cp -rn ${THIS_DIR}/assets/new-feature/* ${<}/
+	cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${<}/
 
 .PHONY: configure
-configure:
+configure: use-templates
 	find . -type f -exec sed -i 's/{{NAME}}/${NAME}/g' '{}' \;
 	find . -type f -exec sed -i 's/{{TITLE}}/${TITLE}/g' '{}' \;

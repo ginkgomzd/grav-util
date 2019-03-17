@@ -39,3 +39,5 @@ serve:
 	cd '${PUBLIC_HTML}' && \
 	php -S localhost:8947 system/router.php
 
+new-doc:
+	$(MAKE) -f ${THIS_DIR}/new-feature/Makefile new-doc
