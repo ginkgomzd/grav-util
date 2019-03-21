@@ -1,11 +1,12 @@
-export LANG = C
-
 include make-do.mk
 
 $(call require-env, TITLE)
 # lower-case and replace spaces with dash:
 NAME ?= $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -)
 $(info NAME, ${NAME})
+
+# avoid character encoding errors (with sed) by setting locale
+export LANG = C
 
 ## detect existing feature, accounting for grav ordering prefixes:
 check_existing_dir = $(shell find . -maxdepth 1 -name '??.${NAME}')
@@ -33,6 +34,7 @@ doc-templates:
 .PHONY: use-templates
 use-templates: ${FEATURE_DIR}
 	@# copy, no-clobber (-n)
+	@# some installs of cp generate an error when files exist despite no-clobber
 	-cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${<}/
 
 .PHONY: configure
