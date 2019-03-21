@@ -1,3 +1,5 @@
+export LANG = C
+
 include make-do.mk
 
 $(call require-env, TITLE)
@@ -31,7 +33,7 @@ doc-templates:
 .PHONY: use-templates
 use-templates: ${FEATURE_DIR}
 	@# copy, no-clobber (-n)
-	cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${<}/
+	-cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${<}/
 
 .PHONY: configure
 configure: use-templates
