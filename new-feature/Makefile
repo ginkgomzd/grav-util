@@ -35,5 +35,5 @@ use-templates: ${FEATURE_DIR}
 
 .PHONY: configure
 configure: use-templates
-	find . -type f -exec sed -i 's/{{NAME}}/${NAME}/g' '{}' \;
-	find . -type f -exec sed -i 's/{{TITLE}}/${TITLE}/g' '{}' \;
+	find . -type f -exec sh -c "sed 's/{{NAME}}/${NAME}/g'  '{}' >'{}'.tmp ; rm '{}'; mv '{}.tmp' '{}' " \;
+	find . -type f -exec sh -c "sed 's/{{TITLE}}/${TITLE}/g'  '{}' >'{}'.tmp ; rm '{}'; mv '{}.tmp' '{}' " \;
