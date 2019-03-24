@@ -2,11 +2,6 @@ include make-do.mk
 
 export PUBLIC_HTML ?= /home/${USER_NAME}/public_html
 
-$(info )
-$(info ---)
-$(info $$PUBLIC_HTML is ${PUBLIC_HTML})
-$(info ---)
-
 help:
 	@pandoc -t plain ${THIS_DIR}/README.md
 
@@ -14,11 +9,10 @@ ${PUBLIC_HTML}:
 	# ${@} does not exist. Did you forget to run `docs-user create-user`?
 	@ false
 
-grav-install: ${PUBLIC_HTML}
+create grav-install: ${PUBLIC_HTML}
+	$(info $$PUBLIC_HTML is ${PUBLIC_HTML})
 	@ test $$(id -u) -eq 0 && ( echo "Declining to run as root."; false) || true
 	composer create-project getgrav/grav ${PUBLIC_HTML} --no-dev
-
-create: grav-install
 
 update:
 	cd '${PUBLIC_HTML}' && bin/gpm selfupgrade -f
@@ -37,3 +31,6 @@ dev-env: project-lab-repo
 
 new-%:
 	$(MAKE) -f ${THIS_DIR}/new-feature/Makefile new-$(*)
+
+list-tpls:
+	$(MAKE) -f ${THIS_DIR}/new-feature/Makefile list

@@ -27,9 +27,9 @@ A local copy lets you preview changes and use a git workflow to collaborate with
 
 Grav supports environment-specific config. These are identified by the hostname used to access the site, e.g. localhost, or docs.ginkgo.st/~docs. Dev Env configs are contained in `user/localhost`.
 
-Replace `<project-repo>` below with the proper repo URL. 
+Replace `<project-repo>` below with the proper repo URL.
 ```shell
-export PUBLIC_HTML=project-dir 
+export PUBLIC_HTML=project-dir
 export PROJ_LAB_REPO=git@github.com:/ginkgostreet/<project-repo>
 
 grav-util create
@@ -53,7 +53,7 @@ From the web-root:
 Generate Project Lab document boilerpalte. Creates each section as a grav page collection listing. Sets cannonical URL's appropriately.
 
 ### Available Starters
-Get the list of available templates using: `grav-util list`
+Get the list of available templates using: `grav-util list-tpls`
 
 Document starters require the `TITLE` be provided.
 
