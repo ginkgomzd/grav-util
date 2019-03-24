@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+serve-grav() {
+  test -z "$1" && docroot='./' || docroot="$1"
+  test  -z "$2" && port=8947 || port=$2
+
+  ( cd $docroot && bin/grav clear-cache )
+  echo $docroot
+
+  until php -S localhost:$port -t "$docroot" "$docroot"/system/router.php
+  do
+  	let "port++"
+  done
+}
+
+serve-grav "$@"
