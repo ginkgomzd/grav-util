@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_grav-util_completions() 
+_grav-util_completions()
 {
 	# sed patterns to exclude targets
 	blacklist=( 'util-.*' 'require-env-.*' 'Makefile' )
@@ -9,7 +9,7 @@ _grav-util_completions()
 
 	for bad in ${blacklist[@]};
 	do
-		MAKE_TARGET_WORDS=$( echo ${MAKE_TARGET_WORDS} | sed -e s/$bad//g )
+		MAKE_TARGET_WORDS=$( echo ${MAKE_TARGET_WORDS} | perl -p -e s/$bad//g )
 	done
 	COMPLETE_WORDS=${MAKE_TARGET_WORDS}
 

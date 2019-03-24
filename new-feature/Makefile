@@ -2,11 +2,12 @@ include make-do.mk
 
 $(call require-env, TITLE)
 # lower-case and replace spaces with dash:
-NAME ?= $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -)
+export NAME ?= $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -)
 $(info NAME, ${NAME})
 
 # avoid character encoding errors (with sed) by setting locale
 export LANG = C
+REPLACE_TOKENS = perl -p -i -e 's%\{\{([^}]+)\}\}%defined $$ENV{$$1} ? $$ENV{$$1} : $$&%eg'
 
 ## detect existing feature, accounting for grav ordering prefixes:
 check_existing_dir = $(shell find . -maxdepth 1 -name '??.${NAME}')
@@ -39,5 +40,4 @@ use-templates: ${FEATURE_DIR}
 
 .PHONY: configure
 configure: use-templates
-	find . -type f -exec sh -c "sed 's/{{NAME}}/${NAME}/g'  '{}' >'{}'.tmp ; rm '{}'; mv '{}.tmp' '{}' " \;
-	find . -type f -exec sh -c "sed 's/{{TITLE}}/${TITLE}/g'  '{}' >'{}'.tmp ; rm '{}'; mv '{}.tmp' '{}' " \;
+	find . -type f -exec ${REPLACE_TOKENS} '{}' \;
