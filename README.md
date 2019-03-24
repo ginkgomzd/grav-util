@@ -41,40 +41,38 @@ The working copy setup consists of:
  - check-out the repo
  - creates an admin user
 
-## Command Reference
-### New Feature
-Generate Project Lab Feature Boilerplate. Creates each section as a grav page collection listing. Sets cannonical URL's appropriately.
+### Serve Locally
+
+A stand-alone command is installed along with grav-util to use the PHP built-in server for a development environment.
+
+From the web-root:
+`serve-grav`
+
+## Generate Document Starters
+
+Generate Project Lab document boilerpalte. Creates each section as a grav page collection listing. Sets cannonical URL's appropriately.
+
+### Available Starters
+Get the list of available templates using: `grav-util list`
+
+Document starters require the `TITLE` be provided.
 
 ```shell
 grav-util new-feature TITLE='Super Snazzy Whiz Bang'
 ```
-It is safe to run `new-feature` on an existing feature because only missing files will be created.
+If a requested files already exist, only missing files will be created.
 
-### New Document
-Similar to new-feature, it will create a grav document in a new folder. It is not yet smart enough to generate a canonical URL based on your current location, or to inherit the taxonomy. Patches welcome.
+## Adding Document Starter Templates
+New templates can be added by adding a directory that contains the templates to the assets folder of this module. If the naming convention is followed, `new-*`, then that is all that is required.
 
-```shell
-grav-util new-doc TITLE='Developer Hubris Considered Harmful'
-```
+If derrived or programmatic values are needed for tokens in the templates, you will have to fork this module and declare the logic. Any token can be used in a template so long as an environment variable of that name will be available. Make automatically exports any variables present, so you don't need to explicitly export variables to use them in the templates.
 
-### Project Lab (Server Only)
+## Project Lab (Server Only)
 
 Create a grav instance for the docs-user, "user":
 `grav-util project-lab USER_NAME=user`
 
-### Create Grav Instance
-
-`grav-util create`
-
-Install a fresh copy of Grav with the Project Lab install profile (RTFM theme).
-
-### Serve Locally
-
-`grav-util serve`
-
-Start the PHP builtin server for a development instance. Uses `PUBLIC_HTML`.
-
-### Update
+## Update
 
 Call gpm selfupgrade to upgrade the grav release.
 `grav-util update USER_NAME=user`
