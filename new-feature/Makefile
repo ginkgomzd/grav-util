@@ -1,37 +1,33 @@
 include make-do.mk
 
 export TITLE
-export name
+export NAME
 
 # avoid character encoding errors by setting locale
 export LANG = C
 REPLACE_TOKENS = perl -p -i -e 's%\{\{([^}]+)\}\}%defined $$ENV{$$1} ? $$ENV{$$1} : $$&%eg'
 
-## detect existing feature, accounting for grav ordering prefixes:
-check_existing_dir = $(shell find . -maxdepth 1 -name '??.${NAME}')
-FEATURE_DIR ?= 	$(shell test '${check_existing_dir}' && echo '${check_existing_dir}' | sed 's/.\///' || echo 00.${NAME})
-
 default: new-feature
 
-${NAME}:
-	# lower-case and replace spaces with dash:
-	export NAME ?= $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -)
+init-name: | require-env-TITLE
+	$(eval NAME = $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -))
 
-${FEATURE_DIR}:
-		mkdir ${@}
+init-dir: init-name
+	@# detect existing feature, accounting for grav ordering prefixes:
+	$(eval check_existing_dir = $(shell find . -maxdepth 1 -name '??.${NAME}'))
+	$(eval FEATURE_DIR = $(shell test '${check_existing_dir}' && echo '${check_existing_dir}' | sed 's/.\///' || echo 00.${NAME}))
+	mkdir ${FEATURE_DIR}
 
-new-%: ${FEATURE_DIR}
+new-%: init-dir
 	$(eval TEMPLATE_SRC=new-${*})
 	@# copy, no-clobber (-n)
 	@# some installs of cp generate an error when files exist despite no-clobber
-	-cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${<}/
+	-cp -rn ${THIS_DIR}/assets/${TEMPLATE_SRC}/* ${FEATURE_DIR}/
 	find . -type f -exec ${REPLACE_TOKENS} '{}' \;
 	# TODO: set taxonomy terms
 	# TODO: set canoncial route
 
-list: TITLE = list
 list:
-	echo
 	echo Available Templates:
 	find ${THIS_DIR}/assets -type d -name 'new-*' -printf ' - %f\n'
 	echo
