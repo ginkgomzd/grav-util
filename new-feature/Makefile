@@ -10,7 +10,7 @@ REPLACE_TOKENS = perl -p -i -e 's%\{\{([^}]+)\}\}%defined $$ENV{$$1} ? $$ENV{$$1
 default: new-feature
 
 init-name: | require-env-TITLE
-	$(eval NAME = $(shell echo '${TITLE}' | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -))
+	$(eval NAME = $(shell echo '${TITLE}' | tr -dc [:alpha:][:space:] | tr [:upper:] [:lower:] | tr -s [:blank:] | tr [:blank:] -))
 
 init-dir: init-name
 	@# detect existing feature, accounting for grav ordering prefixes:
