@@ -5,6 +5,7 @@ uninstall:
 	- sudo rm -rf /usr/local/lib/grav-util
 	- sudo rm /usr/local/bin/grav-util
 	- sudo rm /etc/bash_completion.d/grav-util
+	- sudo rm /usr/local/bin/serve-grav
 
 /usr/local/lib/grav-util:
 	sudo cp -a ./ ${@}
