@@ -29,5 +29,5 @@ new-%: init-dir
 
 list:
 	echo Available Templates:
-	find ${THIS_DIR}/assets -type d -name 'new-*' -printf ' - %f\n'
+	find ${THIS_DIR}/assets -type d -name 'new-*' | sed 's#${THIS_DIR}/assets/# - #'
 	echo
