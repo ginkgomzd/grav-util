@@ -1,9 +1,9 @@
-include make-do.mk
+include mdo-modules.mk
+README = ${THIS_DIR}/README.md
+include mdo-help.mk
 
 export PUBLIC_HTML ?= /home/${USER_NAME}/public_html
 
-help:
-	@pandoc -t plain ${THIS_DIR}/README.md
 
 ${PUBLIC_HTML}:
 	# ${@} does not exist. Did you forget to run `docs-user create-user`?
