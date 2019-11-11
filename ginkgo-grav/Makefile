@@ -1,4 +1,5 @@
-include make-do.mk
+include mdo-modules.mk
+include mdo-require.mk
 
 $(call require-env, PUBLIC_HTML)
 CMD_PLUGIN = ${PUBLIC_HTML}/bin/plugin

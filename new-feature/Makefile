@@ -1,4 +1,5 @@
-include make-do.mk
+include mdo-modules.mk
+include mdo-require.mk
 
 export TITLE
 export NAME
